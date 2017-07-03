@@ -32,6 +32,11 @@ The goals / steps of this project are the following:
 [image12]: ./test_images/8.jpg "Image8"
 [image13]: ./test_images/9.jpg "Image9"
 [image14]: ./output/softmax_output.png "Prediction"
+[image15]: ./output/lenet_2_conv_10_epoch.png "Lenet_2_Conv_10"
+[image16]: ./output/lenet_2_conv_20_epoch.png "Lenet_2_Conv_20"
+[image17]: ./output/lenet_4_conv_10_epoch.png "Lenet_4_Conv_10"
+[image18]: ./output/lenet_4_conv_20_epoch.png "Lenet_4_Conv_20"
+
 
 ## Rubric Points
 
@@ -114,6 +119,47 @@ My final model consisted of the following layers:
 | 8 | Fully Connected | Input = 84. Output = 43. |
 |   | Classifier | |
 
+
+##### The Reason for choosing 4 convolution layer 
+
+I tried out the following architecture before arriving this
+
+* LeNet Standard architecture + Max Pooling 
+
+
+       I chose max pooling instead of average pooling since the input dataset are low resolution images and average pooling would add blur to the image.
+
+![alt text][image15]
+        
+For Epoch =10, Training Accuracy = 0.946 -- Validation Accuracy = 0.914 
+
+i felt that Validation accuracy not meeting requirement of 0.93.
+
+So i tried running the training for Epoch=20
+
+![alt text][image16]
+
+Eventhough Training Accuracy = 0.982 -- Validation Accuracy = 0.966 seems reasonable, i wanted to understand what benefits **Dropout** could add to the network.
+
+** 4 Conolution layer with 2 layer of Max pooling with Dropout **
+
+![alt text][image17]
+
+For Epoch=10: Training Accuracy = 0.919  Validation Accuracy = 0.966 
+
+
+Just went ahead to see the results for Epoch=20, 
+
+
+![alt text][image18]
+
+Training Accuracy = 0.982 -- Validation Accuracy = 0.983
+
+
+The results were comparitively better with **dropout**.
+
+So, I chose to continue to use 4 Convolution layers, 2 layers of Max pooling with dropout.
+ 
 <br>
 
 #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
